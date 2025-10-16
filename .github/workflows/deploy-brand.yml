@@ -12,6 +12,11 @@ on:
         required: false
         type: boolean
         default: false 
+      brands_list:
+        description: 'A JSON array of brand names to deploy'
+        required: true
+        type: string
+        default: "[]" 
 
 jobs:
   deploy_brands:
@@ -19,7 +24,7 @@ jobs:
     
     strategy:
           matrix:
-            brand: ['BRAND_A', 'BRAND_B', 'BRAND_C', 'BRAND_D']
+            brand: ${{ fromJson(inputs.brands_list) }}
         
     runs-on: ubuntu-latest
     
