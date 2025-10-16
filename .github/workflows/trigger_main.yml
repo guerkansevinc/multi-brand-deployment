@@ -1,0 +1,15 @@
+name: Trigger MAIN Deployment (Manual)
+
+# Manual trigger only
+on:
+  workflow_dispatch:
+
+jobs:
+  call_deploy:
+    concurrency: main_deploy # Ensure only one production deployment runs at a time
+    
+    uses: ./.github/workflows/deploy-brand.yml
+    with:
+      target_environment: main # Target the 'main' environment
+      brands_list: ${{ github.event.inputs.brands_to_deploy }}
+      deploy_translations: true
