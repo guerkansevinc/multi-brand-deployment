@@ -33,8 +33,8 @@ jobs:
           # ... (unchanged logic for core deployment)
           TARGET_URL="${{ vars[format('{0}_BASE_URL', matrix.brand)] }}"
           API_KEY="${{ secrets[format('{0}_API_KEY', matrix.brand)] }}"
-          echo TARGET_URL
-          echo API_KEY
+          echo $TARGET_URL
+          echo $API_KEY
           echo "Initiating core deployment for ${{ matrix.brand }}..."
         env:
           BRAND_NAME: ${{ matrix.brand }}
