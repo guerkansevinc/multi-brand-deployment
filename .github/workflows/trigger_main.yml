@@ -11,4 +11,5 @@ jobs:
     uses: ./.github/workflows/deploy-brand.yml
     with:
       target_environment: main # Target the 'main' environment
+      brands_list: '["BRAND_A", "BRAND_B", "BRAND_C", "BRAND_D"]'
       deploy_translations: true
