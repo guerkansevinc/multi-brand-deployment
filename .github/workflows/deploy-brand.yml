@@ -30,11 +30,8 @@ jobs:
       - name: Deploy Brand ${{ matrix.brand }} to ${{ inputs.target_environment }}
         id: main_deploy
         run: |
-          # ... (unchanged logic for core deployment)
-          TARGET_URL="${{ vars[format('{0}_BASE_URL', matrix.brand)] }}"
-          API_KEY="${{ secrets[format('{0}_API_KEY', matrix.brand)] }}"
-          echo "${{ vars[format('{0}_BASE_URL', matrix.brand)] }}"
-          echo "${{ secrets[format('{0}_API_KEY', matrix.brand)] }}"
+          echo ${{ format('{0}_BASE_URL', matrix.brand) }}"
+          echo ${{ format('{0}_API_KEY', matrix.brand) }}"
           echo "Initiating core deployment for ${{ matrix.brand }}..."
         env:
           BRAND_NAME: ${{ matrix.brand }}
