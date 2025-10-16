@@ -11,5 +11,4 @@ jobs:
     uses: ./.github/workflows/deploy-brand.yml
     with:
       target_environment: main # Target the 'main' environment
-      brands_list: ${{ github.event.inputs.brands_to_deploy }}
       deploy_translations: true
