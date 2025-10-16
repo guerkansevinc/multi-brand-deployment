@@ -1,0 +1,20 @@
+name: Deploy to Dev Environment
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+    inputs:
+      deploy_translations:
+        description: 'Deploy translations along with the brands'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  deploy-to-dev:
+    uses: ./.github/workflows/deploy-brand.yml
+    with:
+      target_environment: dev
+      deploy_translations: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy_translations || false }}
